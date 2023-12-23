@@ -15,14 +15,14 @@ exports.createUser = (request, response) => {
             User.create(user).then((data) => {
                 console.log('User created -> ', data);
 
-                response.status(201).send({
+                response.send({
                     succes: true,
                     message: 'User successfully created !'
                 });
             }).catch((error) => {
                 console.log('Error to create an user -> ', error);
 
-                response.status(500).send({
+                response.send({
                     success: false,
                     message: 'Something went wrong ! Fail to create an user.'
                 });
@@ -31,7 +31,7 @@ exports.createUser = (request, response) => {
         else {
             console.log('E-mail already exists -> ', data);
 
-            response.status(409).send({
+            response.send({
                 success: false,
                 message: 'E-mail already registered, please try another one !'
             });
@@ -54,7 +54,7 @@ exports.authenticate = (request, response) => {
         if(!data) {
             console.log('E-mail or password incorrects -> ', data);
 
-            response.status(404).send({
+            response.send({
                 success: false,
                 message: 'E-mail / Password incorrects !'
             });
@@ -65,7 +65,7 @@ exports.authenticate = (request, response) => {
             const id = data.id;
             const token = jwt.sign({id}, process.env.JWT_SECRET, {expiresIn: 300});
 
-            response.status(200).send({
+            response.send({
                 success: true,
                 token: token
             });
@@ -73,7 +73,7 @@ exports.authenticate = (request, response) => {
     }).catch((error) => {
         console.log('Error to auth user -> ', error);
 
-        response.status(500).send({
+        response.send({
             success: false,
             message: 'Something went wrong ! Fail to authenticate user.'
         });
@@ -87,7 +87,7 @@ exports.authorize = (request, response) => {
         if(!data) {
             console.log('User not found -> ', data);
 
-            response.status(404).send({
+            response.send({
                 success: false,
                 message: 'User not found'
             });
@@ -95,7 +95,7 @@ exports.authorize = (request, response) => {
         else {
             console.log('User authorized -> ', data);
 
-            response.status(200).send({
+            response.send({
                 success: true,
                 user: data
             });
@@ -103,7 +103,7 @@ exports.authorize = (request, response) => {
     }).catch((error) => {
         console.log('Error to authorize user -> ', error);
 
-        response.status(500).send({
+        response.send({
             success: false,
             message: 'Something went wrong ! Fail to authorize user'
         });
@@ -127,14 +127,14 @@ exports.updateUserPersonalData = (request, response) => {
             User.update(receivedData, {where: {id: userId}}).then((data) => {
                 console.log('User successfuly updated -> ', data);
 
-                response.status(200).send({
+                response.send({
                     success: true,
                     message: 'User successfully updated !'
                 });
             }).catch((error) => {
                 console.log('Error to update user personal data -> ', error);
 
-                response.status(500).send({
+                response.send({
                     success: false,
                     message: 'Something went wrong ! Fail to update an user'
                 });
@@ -143,7 +143,7 @@ exports.updateUserPersonalData = (request, response) => {
         else {
             console.log('E-mail already registered !', data);
 
-            response.status(409).send({
+            response.send({
                 success: false,
                 message: 'E-mail already registered, please try another one !'
             });
@@ -158,14 +158,14 @@ exports.updateUserPassword = (request, response) => {
     User.update(newPassword, {where: {id: userId}}).then((data) => {
         console.log('Password updated -> ', data);
 
-        response.status(200).send({
+        response.send({
             success: true,
             message: 'Password updated successfully !'
         });
     }).catch((error) => {
         console.log('Error to update a password -> ', error);
 
-        response.status(500).send({
+        response.send({
             success: false,
             message: 'Something went wrong ! Fail to update an user'
         });
@@ -182,7 +182,7 @@ exports.deleteUser = (request, response) => {
     }).then((data) => {
         console.log('User deleted -> ', data);
 
-        response.status(200).send({
+        response.send({
             success: true,
             message: 'User successfully deleted !'
         });
