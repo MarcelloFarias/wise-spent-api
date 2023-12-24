@@ -8,7 +8,7 @@ const verifyJwt = (request, response, next) => {
         jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
             if(error) {
                 console.log('Error to verify token -> ', error);
-                response.status(500).send({
+                response.send({
                     success: false,
                     message: 'Error to verify token'
                 });
