@@ -6,8 +6,9 @@ exports.createSpent = (request, response) => {
         name: request.body.name,
         paymentMonthDay: request.body.paymentMothDay,
         value: request.body.value,
+        status: request.body.status,
         idUser: request.body.idUser
-    }
+    };
 
     Spent.create(spent).then((data) => {
         console.log('Spent registered -> ', data);
@@ -77,13 +78,14 @@ exports.deleteSpent = (request, response) => {
 exports.updateSpent = (request, response) => {
     const spentId = request.params.id;
 
-    const receivedData = {
+    const updatedSpent = {
         name: request.body.name,
         paymentMonthDay: request.body.paymentMonthDay,
+        status: request.body.status,
         value: request.body.value
     };
 
-    Spent.update(receivedData, {where: {id: spentId}}).then((data) => {
+    Spent.update(updatedSpent, {where: {id: spentId}}).then((data) => {
         console.log('Spent updated successfully !', data);
 
         response.send({
@@ -91,7 +93,31 @@ exports.updateSpent = (request, response) => {
             message: 'Spent updated successfully !'
         });
     }).catch((error) => {
-        console.log('Fail to update spent...');
+        console.log('Fail to update spent...', error);
+
+        response.send({
+            success: false,
+            message: 'Something went wrong ! Fail to update a spent...'
+        });
+    });
+}
+
+exports.updateSpentStatus = (request, response) => {
+    const spentId = request.params.id;
+
+    const updatedStatus = {
+        status: request.body.status
+    };
+
+    Spent.update(updatedStatus, {where: {id: spentId}}).then((data) => {
+        console.log('Spent updated successfully !', data);
+
+        response.send({
+            success: true,
+            message: 'Spent updated successfully !'
+        });
+    }).catch((error) => {
+        console.log('Fail to update spent...', error);
 
         response.send({
             success: false,

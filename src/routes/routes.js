@@ -15,6 +15,7 @@ app.delete('/deleteUser/:id', User.deleteUser);
 app.post('/createSpent', Spent.createSpent);
 app.get('/getSpents/:id', Spent.findByUserId);
 app.put('/updateSpent/:id', Spent.updateSpent);
+app.put('/updateSpentStatus/:id', Spent.updateSpentStatus);
 app.delete('/deleteSpent/:id', Spent.deleteSpent);
 
 module.exports = app;
