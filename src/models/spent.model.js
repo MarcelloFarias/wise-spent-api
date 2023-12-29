@@ -10,6 +10,9 @@ module.exports = (sequelze, Sequelize) => {
         value: {
             type: Sequelize.DOUBLE
         },
+        status: {
+            type: Sequelize.STRING
+        },
         idUser: {
             type: Sequelize.INTEGER,
             foreingKey: true,
