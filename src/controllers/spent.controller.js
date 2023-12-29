@@ -34,7 +34,7 @@ exports.findByUserId = (request, response) => {
             idUser: userId
         }
     }).then((data) => {
-        console.log('Get spents of user with id: ' + id, data);
+        console.log('Get spents of user with id: ' + userId, data);
 
         response.send({
             success: true,
