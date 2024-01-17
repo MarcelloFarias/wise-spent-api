@@ -16,7 +16,7 @@ exports.createUser = (request, response) => {
                 console.log('User created -> ', data);
 
                 response.send({
-                    succes: true,
+                    success: true,
                     message: 'User successfully created !'
                 });
             }).catch((error) => {
