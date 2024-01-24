@@ -5,7 +5,6 @@ module.exports = (sequelze, Sequelize) => {
         },
         paymentMonthDay: {
             type: Sequelize.INTEGER,
-            allowNull: true
         },
         value: {
             type: Sequelize.DOUBLE

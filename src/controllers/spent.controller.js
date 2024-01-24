@@ -4,7 +4,7 @@ const Spent = database.spent;
 exports.createSpent = (request, response) => {
     const spent = {
         name: request.body.name,
-        paymentMonthDay: request.body.paymentMothDay,
+        paymentMonthDay: request.body.paymentMonthDay,
         value: request.body.value,
         status: request.body.status,
         idUser: request.body.idUser
