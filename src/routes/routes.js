@@ -13,6 +13,7 @@ app.put('/updatePassword/:id', User.updateUserPassword);
 app.delete('/deleteUser/:id', User.deleteUser);
 
 app.post('/createSpent', Spent.createSpent);
+app.get('/getSpent/:id', Spent.findById);
 app.get('/getSpents/:id', Spent.findByUserId);
 app.put('/updateSpent/:id', Spent.updateSpent);
 app.put('/updateSpentStatus/:id', Spent.updateSpentStatus);

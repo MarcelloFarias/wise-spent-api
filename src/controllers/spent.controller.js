@@ -27,6 +27,26 @@ exports.createSpent = (request, response) => {
     });
 }
 
+exports.findById = (request, response) => {
+    const spentId = request.params.id;
+
+    Spent.findOne({where: {id: spentId}}).then((data) => {
+        console.log("Spent found -> ", data);
+
+        response.send({
+            success: true,
+            spent: data
+        });
+    }).catch((error) => {
+        console.log('Spent not found -> ', error);
+
+        response.send({
+            success: false,
+            message: 'Fail to get spent'
+        });
+    });
+}
+
 exports.findByUserId = (request, response) => {
     const userId = request.params.id;
 
