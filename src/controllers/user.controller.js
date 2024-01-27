@@ -155,12 +155,20 @@ exports.updateUserPassword = (request, response) => {
     const userId = request.params.id;
     const newPassword = request.body.password;
 
-    User.update(newPassword, {where: {id: userId}}).then((data) => {
+    User.update({
+        password: newPassword
+    }, 
+    {
+        where: {
+            id: userId
+        }
+    }).then((data) => {
         console.log('Password updated -> ', data);
 
         response.send({
             success: true,
-            message: 'Password updated successfully !'
+            message: 'Password updated successfully !',
+            new: newPassword
         });
     }).catch((error) => {
         console.log('Error to update a password -> ', error);
