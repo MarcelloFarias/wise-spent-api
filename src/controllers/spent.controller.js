@@ -57,9 +57,39 @@ exports.findByUserId = (request, response) => {
     }).then((data) => {
         console.log('Get spents of user with id: ' + userId, data);
 
+        let totalMonthlySpents = 0;
+        let totalPaidSpents = 0;
+        let totalPendingSpents = 0;
+        let paidSpentsAmount = 0;
+        let pendingSpentsAmount = 0;
+
+        data.forEach((spent) => {
+            if(spent.status === 'pago') {
+                totalPaidSpents += spent.value;
+                paidSpentsAmount++;
+            }
+
+            if(spent.status === 'pendente') {
+                totalPendingSpents += spent.value;
+                pendingSpentsAmount++;
+            }
+
+            totalMonthlySpents += spent.value;
+        });
+
+        const dataOfSpents = {
+            totalSpents: totalMonthlySpents.toFixed(2).replace('.', ','),
+            totalPaid: totalPaidSpents.toFixed(2).replace('.', ','),
+            totalPending: totalPendingSpents.toFixed(2).replace('.', ','),
+            paidAmount: paidSpentsAmount,
+            pendingAmount: pendingSpentsAmount,
+            spentsAmount: data.length
+        };
+
         response.send({
             success: true,
-            spents: data
+            spents: data,
+            data: dataOfSpents
         });
     }).catch((error) => {
         console.log('Fail to get user spents...', error);
