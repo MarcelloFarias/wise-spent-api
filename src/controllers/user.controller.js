@@ -167,8 +167,7 @@ exports.updateUserPassword = (request, response) => {
 
         response.send({
             success: true,
-            message: 'Password updated successfully !',
-            new: newPassword
+            message: 'Password updated successfully !'
         });
     }).catch((error) => {
         console.log('Error to update a password -> ', error);
