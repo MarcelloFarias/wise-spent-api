@@ -8,7 +8,7 @@ const Spent = require('../controllers/spent.controller.js');
 app.post('/createUser', User.createUser);
 app.post('/authUser', User.authenticate);
 app.get('/authorize', verifyJwt, User.authorize);
-app.put('/updateUserPersonalData/:id', User.updateUserPersonalData);
+app.put('/updatePersonalData/:id', User.updateUserPersonalData);
 app.put('/updatePassword/:id', User.updateUserPassword);
 app.delete('/deleteUser/:id', User.deleteUser);
 

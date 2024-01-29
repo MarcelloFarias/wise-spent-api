@@ -113,39 +113,60 @@ exports.authorize = (request, response) => {
 exports.updateUserPersonalData = (request, response) => {
     const userId = request.params.id;
 
-    const receivedData = {
+    const newUserData = {
         name: request.body.name,
         email: request.body.email
     };
 
-    User.findOne({
-        where: {
-            email: receivedData.email
-        }
-    }).then((data) => {
-        if(!data) {
-            User.update(receivedData, {where: {id: userId}}).then((data) => {
-                console.log('User successfuly updated -> ', data);
+    User.findByPk(userId).then((data) => {
+        if(newUserData.email === data.email) {
+            User.update(newUserData, {where: {id: userId}}).then((data) => {
+                console.log('User updated successfully !');
 
                 response.send({
                     success: true,
-                    message: 'User successfully updated !'
+                    message: 'User updated successfully'
                 });
             }).catch((error) => {
-                console.log('Error to update user personal data -> ', error);
+                console.log('Error to update an user', error);
 
                 response.send({
                     success: false,
-                    message: 'Something went wrong ! Fail to update an user'
-                });
+                    message: 'Something wend wrong, fail to update user...'
+                })
             });
         }
         else {
-            console.log('E-mail already registered !', data);
-
-            response.send({
-                success: false,
-                message: 'E-mail already registered, please try another one !'
+            User.findOne({
+                where: {
+                    email: newUserData.email
+                }
+            }).then((data) => {
+                if(!data) {
+                    User.update(newUserData, {where: {id: userId}}).then((data) => {
+                        console.log('User successfuly updated -> ', data);
+        
+                        response.send({
+                            success: true,
+                            message: 'User successfully updated !'
+                        });
+                    }).catch((error) => {
+                        console.log('Error to update user -> ', error);
+        
+                        response.send({
+                            success: false,
+                            message: 'Something went wrong ! Fail to update user'
+                        });
+                    });
+                }
+                else {
+                    console.log('E-mail already registered !', data);
+        
+                    response.send({
+                        success: false,
+                        message: 'E-mail already registered, please try another one !'
+                    });
+                }
             });
         }
     });
