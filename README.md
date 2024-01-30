@@ -15,18 +15,18 @@ O projeto wise spent é um gestor de gastos mensais pessoal. Esta é uma API fei
 O projeto conta com dois Models: `User` e `Spent`, referentes ao usuário e gasto, respectivamente.
 <br>
 Funcionalidades de `User`:
-`Funcionalidade 1`: Cadastrar um usuário
-`Funcionalidade 2`: Editar as informações do usuário (nome e e-mail)
-`Funcionalidade 3`: Editar a senha do usuário
-`Funcionalidade 4`: Autenticação do usuário
-`Funcionalidade 5`: Autorização do usuário (Os dados do usuário são retornados quando há sucesso na autorização)
-`Funcionalidade 6`: Excluir um usuário
+- `Funcionalidade 1`: Cadastrar um usuário
+- `Funcionalidade 2`: Editar as informações do usuário (nome e e-mail)
+- `Funcionalidade 3`: Editar a senha do usuário
+- `Funcionalidade 4`: Autenticação do usuário
+- `Funcionalidade 5`: Autorização do usuário (Os dados do usuário são retornados quando há sucesso na autorização)
+- `Funcionalidade 6`: Excluir um usuário
 <br>
 Funcionalidades de `Spent`:
-`Funcionalidade 1`: Cadastrar um gasto
-`Funcionalidade 2`: Recuperar um gasto específico
-`Funcionalidade 3`: Recuperar um gasto específico pelo id
-`Funcionalidade 4`: Recuperar os gastos de um usuário
-`Funcionalidade 5`: Editar um gasto
-`Funcionalidade 6`: Editar o status de um gasto
-`Funcionalidade 7`: Excluir um gasto
+- `Funcionalidade 1`: Cadastrar um gasto
+- `Funcionalidade 2`: Recuperar um gasto específico
+- `Funcionalidade 3`: Recuperar um gasto específico pelo id
+- `Funcionalidade 4`: Recuperar os gastos de um usuário
+- `Funcionalidade 5`: Editar um gasto
+- `Funcionalidade 6`: Editar o status de um gasto
+- `Funcionalidade 7`: Excluir um gasto
