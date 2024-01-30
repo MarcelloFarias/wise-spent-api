@@ -30,3 +30,4 @@ Funcionalidades de `Spent`:
 - `Funcionalidade 5`: Editar um gasto
 - `Funcionalidade 6`: Editar o status de um gasto
 - `Funcionalidade 7`: Excluir um gasto
+- `Funcionalidade 8`: Excluir todos os gastos de um usuário quando o usuário for excluído
