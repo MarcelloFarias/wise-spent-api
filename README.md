@@ -24,10 +24,9 @@ Funcionalidades de `User`:
 <br><br>
 Funcionalidades de `Spent`:
 - `Funcionalidade 1`: Cadastrar um gasto
-- `Funcionalidade 2`: Recuperar um gasto específico
-- `Funcionalidade 3`: Recuperar um gasto específico pelo id
-- `Funcionalidade 4`: Recuperar os gastos de um usuário
-- `Funcionalidade 5`: Editar um gasto
-- `Funcionalidade 6`: Editar o status de um gasto
-- `Funcionalidade 7`: Excluir um gasto
-- `Funcionalidade 8`: Excluir todos os gastos de um usuário quando o usuário for excluído
+- `Funcionalidade 2`: Recuperar um gasto específico pelo id
+- `Funcionalidade 3`: Recuperar os gastos de um usuário
+- `Funcionalidade 4`: Editar um gasto
+- `Funcionalidade 5`: Editar o status de um gasto
+- `Funcionalidade 6`: Excluir um gasto
+- `Funcionalidade 7`: Excluir todos os gastos de um usuário quando o usuário for excluído
