@@ -204,38 +204,33 @@ exports.updateUserPassword = (request, response) => {
 exports.deleteUser = (request, response) => {
     const userId = request.params.id;
 
-    try {
-        Spent.destroy({
+    Spent.destroy({
+        where: {
+            idUser: userId
+        }
+    }).then((data) => {
+        console.log("User spents from user with id: " + userId + " successfully deleteds !", data);
+    }).catch((error) => {
+        console.log("Something went wrong... fail to delete user spents !", error);
+    }).then(() => {
+        User.destroy({
             where: {
-                idUser: userId
+                id: userId
             }
         }).then((data) => {
-            console.log("User spents from user with id: " + userId + " successfully deleteds !", data);
+            console.log('User deleted -> ', data);
+    
+            response.send({
+                success: true,
+                message: 'User successfully deleted !'
+            });
         }).catch((error) => {
-            console.log("Something went wrong... fail to delete user spents !", error);
-        }).then(() => {
-            User.destroy({
-                where: {
-                    id: userId
-                }
-            }).then((data) => {
-                console.log('User deleted -> ', data);
-        
-                response.send({
-                    success: true,
-                    message: 'User successfully deleted !'
-                });
-            }).catch((error) => {
-                console.log('Error to delete an user -> ', error);
-        
-                response.send({
-                    success: false,
-                    message: 'Something went wrong ! Fail to delete an user'
-                });
+            console.log('Error to delete an user -> ', error);
+    
+            response.send({
+                success: false,
+                message: 'Something went wrong ! Fail to delete an user'
             });
         });
-    }
-    catch(error) {
-        console.log(error);
-    }
+    });
 }
