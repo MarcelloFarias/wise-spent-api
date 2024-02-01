@@ -30,3 +30,12 @@ Funcionalidades de `Spent`:
 - `Funcionalidade 5`: Editar o status de um gasto
 - `Funcionalidade 6`: Excluir um gasto
 - `Funcionalidade 7`: Excluir todos os gastos de um usuário quando o usuário for excluído
+
+# 📜 Licença
+
+[![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE) <br>
+Distribuído sob a licença MIT. Consulte `LICENSE` para obter mais informações.
+
+# 📫Contato
+
+Marcello Farias - [Linkedin](https://www.linkedin.com/in/marcello-rocha-381572231/) - [Instagram](https://www.instagram.com/cello.farias) 
