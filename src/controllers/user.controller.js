@@ -1,6 +1,8 @@
 const database = require('../database/database.js');
 const jwt = require('jsonwebtoken');
 
+const Bcrypt = require("bcrypt");
+
 const User = database.user;
 const Spent = database.spent;
 
@@ -49,26 +51,40 @@ exports.authenticate = (request, response) => {
     User.findOne({
         where: {
             email: receivedData.email,
-            password: receivedData.password
         }
     }).then((data) => {
         if(!data) {
-            console.log('E-mail or password incorrects -> ', data);
+            console.log('E-mail incorrect -> ', data);
 
             response.send({
                 success: false,
-                message: 'E-mail / Password incorrects !'
+                message: 'E-mail incorrect !'
             });
         }
         else {
-            console.log('User authenticated -> ', data);
+            Bcrypt.compare(receivedData.password, data.password, (error, result) => {
+                if(error) {
+                    console.log(error);
+                }
+                else if(result) {
+                    console.log('User authenticated -> ', result);
 
-            const id = data.id;
-            const token = jwt.sign({id}, process.env.JWT_SECRET, {expiresIn: 300});
+                    const id = data.id;
+                    const token = jwt.sign({id}, process.env.JWT_SECRET, {expiresIn: 300});
 
-            response.send({
-                success: true,
-                token: token
+                    response.send({
+                        success: true,
+                        token: token
+                    });
+                }
+                else {
+                    console.log("Password incorrect !");
+
+                    response.send({
+                        success: false,
+                        message: "Password Incorrect"
+                    });
+                }
             });
         }
     }).catch((error) => {
